@@ -25,9 +25,10 @@ const Form = ({onSubmit}) => {
       >
       <Input
         {...todoText}
-        variant="outlined" placeholder="Add todo" margin="normal"
+         placeholder="Add todo" margin="normal" variant="filled"
       />
     </form>
+    
   );
 };
 
