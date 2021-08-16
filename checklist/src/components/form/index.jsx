@@ -1,6 +1,6 @@
 import { Input } from "@chakra-ui/react";
 //Enter new task to add to the todo
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const useInputValue = (initialValue) => {
   const [value, setValue] = useState(initialValue);
@@ -8,27 +8,28 @@ const useInputValue = (initialValue) => {
   return {
     value,
     onChange: (e) => setValue(e.target.value),
-    resetValue: () => setValue("")
+    resetValue: () => setValue(""),
   };
 };
 
-const Form = ({onSubmit}) => {
-  const { resetValue, ...todoText} = useInputValue("");
+const Form = ({ onSubmit }) => {
+  const { resetValue, ...todoText } = useInputValue("");
 
   return (
     <form
-      onSubmit={e => {
-      e.preventDefault(); 
-      onSubmit(todoText.value); 
-      resetValue();
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit(todoText.value);
+        resetValue();
       }}
-      >
+    >
       <Input
         {...todoText}
-         placeholder="Add todo" margin="normal" variant="filled"
+        placeholder="Add todo"
+        margin="normal"
+        variant="filled"
       />
     </form>
-    
   );
 };
 
