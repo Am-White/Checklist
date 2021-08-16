@@ -2,23 +2,32 @@ import Todo from "../form";
 import React, { useState } from "react";
 import {
   Checkbox,
-  Container,
   IconButton,
-  SimpleGrid,
-  Box,
-  Button,
+  List,
+  ListItem
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 
-//list of what needs to be done + delete button + checkbox
-const Todos = ({todos, toggleComplete}) => {
+//list of what needs to be done + delete button 
+const Todos = ({todos, toggleComplete,}) => {
   //const todoState = useState(["do this"])
-  return (
-    <div className="App">
 
-      <div>
+  // const [todo, setTodo] = useState([])
+
+  // const handleDelete = e => {
+  //   const {id} = e.target.parentElement;
+  //   todo.splice(id, 0)
+  //   setTodo([...todo]);
+    
+  // };
+  
+  return (
+    <div className="App" 
+      style={{maxHeight:"400px"}}>
+
+      <List>
             {todos.map(({ todoText, complete }, i) => (
-              <div
+              <ListItem
                 key={i}
                
                 style={{
@@ -31,15 +40,17 @@ const Todos = ({todos, toggleComplete}) => {
               >
                 <Checkbox onChange={() => toggleComplete(i)}> </Checkbox>
             
-                {todoText}
+                {todoText }
+                
                 <IconButton
+                  // onClick={handleDelete}
                   boxSize="1rem"
                   aria-label="Search database"
                   icon={<DeleteIcon />}
                 />
-              </div>
+              </ListItem>
             ))}
-          </div>
+          </List>
     </div>
   );
 };

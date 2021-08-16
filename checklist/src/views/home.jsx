@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import Todos from '../components/todos';
 import Form from "../components/form";
 import {
-  Checkbox,
   Container,
-  IconButton,
   SimpleGrid,
   Box,
   Button,
 } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
 
 //display
 const Home = () => {
@@ -27,9 +24,10 @@ const Home = () => {
       )
     );
             console.log(todos);
+
   return (
     <div className="App">
-      <Container>My Todo List:</Container>
+      <Container className="header">My Todo List:</Container>
 
       <SimpleGrid columns={[2, null, 2]} spacing="40px">
         <Box>
@@ -39,18 +37,24 @@ const Home = () => {
             }
           />
         </Box>
+        
 
         <Box>
-        <Todos todos = {todos} toggleComplete = {toggleComplete}/>
-
-        </Box>
+          
+        <Todos 
+        placeholder="Todos show here"
+        todos = {todos} 
+        toggleComplete = {toggleComplete}/>
+        
         <Button
           onClick={() => setTodos([])}
           colorScheme="teal"
           variant="outline"
+          width="100%"
         >
           Clear All
         </Button>
+        </Box>
       </SimpleGrid>
     </div>
   );
