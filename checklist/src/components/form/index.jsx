@@ -1,4 +1,4 @@
-import { Input } from "@chakra-ui/react";
+import {  Input } from "@chakra-ui/react";
 //Enter new task to add to the todo
 import React, { useState } from "react";
 
@@ -25,9 +25,10 @@ const Form = ({ onSubmit }) => {
     >
       <Input
         {...todoText}
-        placeholder="Add todo"
+        placeholder="Add todo here..."
         margin="normal"
         variant="filled"
+        height="50px"
       />
     </form>
   );

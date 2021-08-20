@@ -3,7 +3,6 @@ import Todos from '../components/todos';
 import Form from "../components/form";
 import {
   Container,
-  SimpleGrid,
   Box,
   Button,
 } from "@chakra-ui/react";
@@ -25,27 +24,44 @@ const Home = () => {
     );
             console.log(todos);
 
-  return (
-    <div className="App">
-      <Container className="header">My Todo List:</Container>
 
-      <SimpleGrid columns={[2, null, 2]} spacing="40px">
+  const handleDelete = (i) =>
+  setTodos(
+    todos.map((todo, k) =>
+      k !== i
+        ? todo
+        : null
+    ).filter(Boolean)
+  );
+
+  return (
+    <div className="App" style={{margin:"auto", width:"700px"}}>
+      <Container 
+      textAlign="center"
+      fontSize="30px"
+      >My Todo List:</Container>
+
+      
         <Box>
           <Form
             onSubmit={(todoText) =>
               setTodos([{ todoText, complete: false }, ...todos])
             }
           />
-        </Box>
-        
 
-        <Box>
-          
+        <Box
+        style={{
+          height:"500px",
+          backgroundColor:"tan",
+          paddingTop:"20px"
+        }}>
+
         <Todos 
-        placeholder="Todos show here"
         todos = {todos} 
-        toggleComplete = {toggleComplete}/>
-        
+        toggleComplete = {toggleComplete}
+        handleDelete = {handleDelete}/>
+        </Box>
+
         <Button
           onClick={() => setTodos([])}
           colorScheme="teal"
@@ -55,7 +71,7 @@ const Home = () => {
           Clear All
         </Button>
         </Box>
-      </SimpleGrid>
+     
     </div>
   );
 };

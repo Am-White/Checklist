@@ -3,54 +3,47 @@ import React, { useState } from "react";
 import {
   Checkbox,
   IconButton,
-  List,
-  ListItem
+
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 
 //list of what needs to be done + delete button 
-const Todos = ({todos, toggleComplete,}) => {
-  //const todoState = useState(["do this"])
-
-  // const [todo, setTodo] = useState([])
-
-  // const handleDelete = e => {
-  //   const {id} = e.target.parentElement;
-  //   todo.splice(id, 0)
-  //   setTodo([...todo]);
-    
-  // };
+const Todos = ({todos, toggleComplete, handleDelete}) => {
   
-  return (
-    <div className="App" 
-      style={{maxHeight:"400px"}}>
+ // const todoState = useState(["do this"])
 
-      <List>
+  return (
+    <div className="App">
+
+      <div>
             {todos.map(({ todoText, complete }, i) => (
-              <ListItem
+              <div
                 key={i}
                
                 style={{
                   backgroundColor: "lightblue",
+                  opacity: "85%",
+                  padding: "5px",
                   fontSize: "20px",
-                  textAlign: "center",
-
                   textDecoration: complete ? "line-through" : "",
                 }}
               >
-                <Checkbox onChange={() => toggleComplete(i)}> </Checkbox>
+                <Checkbox 
+                onChange={() => toggleComplete(i)} 
+                isChecked={complete}
+                float="left"> </Checkbox>
             
                 {todoText }
                 
-                <IconButton
-                  // onClick={handleDelete}
-                  boxSize="1rem"
+                <DeleteIcon
+                  onClick={() => handleDelete(i)}
+                  float="right"
                   aria-label="Search database"
-                  icon={<DeleteIcon />}
+                  
                 />
-              </ListItem>
+              </div>
             ))}
-          </List>
+          </div>
     </div>
   );
 };
