@@ -1,9 +1,7 @@
 import Todo from "../form";
 import React, { useState } from "react";
 import {
-  Checkbox,
-  IconButton,
-
+  Checkbox
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 
@@ -21,7 +19,7 @@ const Todos = ({todos, toggleComplete, handleDelete}) => {
                 key={i}
                
                 style={{
-                  backgroundColor: "lightblue",
+                  border: "solid black 1px",
                   opacity: "85%",
                   padding: "5px",
                   fontSize: "20px",
@@ -38,8 +36,8 @@ const Todos = ({todos, toggleComplete, handleDelete}) => {
                 <DeleteIcon
                   onClick={() => handleDelete(i)}
                   float="right"
-                  aria-label="Search database"
-                  
+                  cursor="pointer"
+                  aria-label="Search database"  
                 />
               </div>
             ))}
