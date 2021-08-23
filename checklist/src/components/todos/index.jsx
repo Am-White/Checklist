@@ -1,14 +1,51 @@
-import Todo from '../form';
-import React, { useState } from 'react';
+import Todo from "../form";
+import React, { useState } from "react";
+import {
+  Checkbox,
+  IconButton,
 
-//list of what needs to be done + delete button + checkbox
-const Todos = () => {
-    //const todoState = useState(["do this"])
-    return  (
+} from "@chakra-ui/react";
+import { DeleteIcon } from "@chakra-ui/icons";
+
+//list of what needs to be done + delete button 
+const Todos = ({todos, toggleComplete, handleDelete}) => {
+  
+ // const todoState = useState(["do this"])
+
+  return (
     <div className="App">
-        <Todo/>
+
+      <div>
+            {todos.map(({ todoText, complete }, i) => (
+              <div
+                key={i}
+               
+                style={{
+                  backgroundColor: "lightblue",
+                  opacity: "85%",
+                  padding: "5px",
+                  fontSize: "20px",
+                  textDecoration: complete ? "line-through" : "",
+                }}
+              >
+                <Checkbox 
+                onChange={() => toggleComplete(i)} 
+                isChecked={complete}
+                float="left"> </Checkbox>
+            
+                {todoText }
+                
+                <DeleteIcon
+                  onClick={() => handleDelete(i)}
+                  float="right"
+                  aria-label="Search database"
+                  
+                />
+              </div>
+            ))}
+          </div>
     </div>
-    )
-}
+  );
+};
 
 export default Todos;

@@ -1,12 +1,12 @@
-import Home from './views/home';
-import { ChakraProvider } from "@chakra-ui/react"
-import './App.css';
+import Home from "./views/home";
+import { ChakraProvider } from "@chakra-ui/react";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App" >
+    <div className="App">
       <ChakraProvider>
-      <Home/>
+        <Home />
       </ChakraProvider>
     </div>
   );
